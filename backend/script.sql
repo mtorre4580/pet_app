@@ -1,0 +1,53 @@
+CREATE DATABASE loqueelperrosellevo;
+
+CREATE TABLE usuario(
+	id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    foto TEXT,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE turno(
+	id INT NOT NULL AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    horario VARCHAR(255),
+    fk_usuario INT,
+	PRIMARY KEY (id),
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);
+
+CREATE TABLE noticias(
+    id INT NOT NULL AUTO_INCREMENT,
+    fecha DATETIME NOT NULL,
+    descripcion TEXT,
+    foto TEXT,
+    titulo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO noticias SET titulo = 'Descuentos para jubilados', fecha= NOW(), descripcion= 'Porque los queremos y se merecen ayudarlos con todo lo que podamos, siempre pensamos en todo!',foto = 'descuento_jubilados.jpg';
+INSERT INTO noticias SET titulo = 'Mascota en adopción', fecha= NOW(), descripcion= 'Estamos buscando una casa para este lindo perrito, esta vacunado desparasitado, cualquier duda no dudes en comunicarte con nosotros, tratemos de ayudar', foto = 'perro_adopcion.jpg';
+INSERT INTO noticias SET titulo = 'Nuevos juguetes trixie', fecha= NOW(), descripcion= 'Juguete súper resistente para rellenar con golosinas caninas!!. Ideales para cuando te vas de casa y tu mascota queda sola. Calidad premium!! A prueba de golden retrievers!', foto = 'juguete_trixie.jpg';
+INSERT INTO noticias SET titulo = 'Cepillos 2018', fecha= NOW(), descripcion= 'Set de cepillos de diente!! Calidad premium. Tu mascota también merece cuidado dental.', foto = 'cepillo.jpg';
+INSERT INTO noticias SET titulo = 'Visita de wanda', fecha= NOW(), descripcion= 'A wanda le costó madrugar hoy. Ya está, bella, estás limpia y perfumada para recibir todos los mimos', foto = 'visita_wanda.jpg';
+INSERT INTO noticias SET titulo = 'Cámara oculta en los golden', fecha= NOW(), descripcion= 'Chris y Nina Cardinal, padres de una niña de 15 meses llamada Chloe, han descubierto gracias a una cámara oculta cómo su hija conseguía escapar de su habitación. La pareja se había despertado en reiteradas ocasiones con la presencia de la pequeña Chloe en el pasillo y no entendía cómo era capaz de abrir el pomo de la puerta, midiendo menos de un metro de altura. Las imágenes de una cámara situada en el interior del cuarto han revelado que Chloe contaba en su huida con la colaboración de Colby y Bleu, los dos golden retrievers de la casa. Los perros de esta familia afincada en Phoenix, Estados Unidos, entraban a primera hora de la mañana en la habitación de la menor en busca del desayuno y la despertaban con lametones, dejando la puerta abierta.' , foto = 'escape.jpg';
+INSERT INTO noticias SET titulo='Una perra guía pare ocho cachorros en el aeropuerto de Tampa', fecha= NOW(), descripcion='El aeropuerto de Tampa, en Florida, vivió la pasada semana un gran revuelo cuando una perra labrador de dos años se puso de parto, inesperadamente. El animal, un perro guía, se disponía a embarcar con sus dueñas, una mujer y su hija, en un avión que volaba a Filadelfia. Sabían que su perra estaba preñada, pero no creían que la llegada de los cachorros era inminente. La historia tuvo final feliz: la familia y sus perros perdieron el avión , pero pudieron viajar por carretera con los ocho cachorros en perfectas condiciones. El parto fue asistido en la misma puerta de embarque por dos miembros del equipo médico de los bomberos del aeropuerto, que difundieron su trabajo por Twitter con un buen número de fotografías, mientras numerosos pasajeros rodeaban a la parturienta y sacaban fotos con sus móviles.', foto='perra_pariendo.jpg';
+INSERT INTO noticias SET titulo='Aprovecha a comprar alimento', fecha=NOW(), descripcion='La próxima semana aumentan los precios en royal canin, aprovecha a comprar esta semana';
+INSERT INTO noticias SET titulo = 'Ocho cosas que crees que le gustan a tu gato, pero no', fecha= NOW(), descripcion= 'Un momento para el anecdotario: existe en Facebook una página llamada Perritos haciendo cosas que es, probablemente, lo mejor que le ha pasado a esa red social en años. Consiste en fotos de perros de todos los tamaños y razas en situaciones bastante particulares y con unos sencillos, pero lucidísimos, pies de foto que suben el invento a los altares del humor moderno. La página tiene casi dos millones de seguidores.
+Existe también otra llamada Gatitos haciendo cosas. Repetir el invento con los verdaderos héroes de Internet parecía una apuesta segura, pero se quedó a medias. Solo unas 120.000 personas siguen a los gatitos. ¿Por qué? Porque un tipo de humor que juega con la expresividad y sus relecturas se da de bruces contra la realidad de los gatos: su gracia consiste en que son inexpresivos, indolentes y casi inalterables. Sirven para expresar cientos de emociones, pero posiblemente ninguna de ellas sirve para construir un relato de ternura ni de humor cálido.
+Esto es lo que amamos los que convivimos con gatos, pero también lo que a veces nos vuelve locos a la hora de entenderlos. Por eso, y siguiendo la estela de este artículo sobre perros que publicamos en ICON, repasamos una serie de cosas que solemos hacer con nuestros gatos pensando en que les agradan y, a menudo, solo les causan confusión y disgusto. Ojo, esto no se aplica a todos los gatos. Puede que tú conozcas a uno de esos ejemplares extraños a los que, por ejemplo, les encanta el agua. Hay gatos para todo. ', foto = 'durmiendo.jpg';
+INSERT INTO noticias SET titulo = '¿Perro, gato, pez o hámster? Cuál es la mascota ideal para tu hogar', fecha= NOW(), descripcion= 'La mayoría de los Argentinos tiene un animal doméstico en su casa -según una encuesta de 2016 de GfK Group- y, aunque mundialmente los felinos llevan la delantera (sí, los gatos predominan en los hogares europeos, por ejemplo), los argentinos somos fans de los perros.
+Entre los de "raza", el bulldog francés, inglés y el ovejero alemán son los más elegidos; hace un tiempo estaban de moda los caniches y los dachshund (“perro salchicha”), pero esa tendencia cambió. Las campañas proteccionistas, a su vez, buscan que se adopten perros de la calle en lugar de perros de criaderos. ¿Hay una mascota para cada tipo de persona? ¿Qué relación hay con el tipo de espacio del que dispongamos y la cantidad de tiempo que le podamos dedicar? Estas son algunas variables a tener en cuenta a la hora de pensar en adoptar un animal doméstico.
+Esos mágicos felinos
+La mascota ideal, ¿es la que aparece en un momento clave de la vida? Caro (32) vive con su gata ("Beata Ninja") y su gato ("Plúmbico") en Caballito: “Una vez tuve una conversación con un veterinario, en donde decíamos que los animales son un regalo de la vida. Y algo cambia profundamente cada vez que aparecen: la vida da un giro. Ellos vienen en momentos especiales: cuando llega un hijo, en rupturas de pareja, cuando una chico necesita abrirse al mundo, ellos tienen una función que cumplir con nosotros.
+Encontró a sus gatos en Parque Centenario, un lugar donde suelen ofrecer animales en adopción. “A Plúmbico me lo llevé a mi casa porque se estaba muriendo de una infección. Con amor y medicamentos se le fue, aunque perdió un ojo. Me mira y nos entendemos, nos comunicamos perfecto, es un gato sanador que se da cuenta cuando alguien tiene algún dolor', foto = 'perro_gato.jpg';
+INSERT INTO noticias SET titulo = 'Tecnología y moda, en una expo para fanáticos de los perros', fecha= NOW(), descripcion= 'La tecnología es hoy es una aliada para el cuidado de las mascotas: chapas con tecnología QR para localizar a las mascotas en caso que se pierdan, redes sociales para compartir información, aplicaciones para tenencia responsable, soluciones para dejar al perro cuando te vas de viaje son algunas de las opciones más extendidas.
+Pero no sólo de accesorios tech viven los perros. También hay moda canina de todos colores, tamaños y estampados con propuestas tanto para mascotas grandes como pequeñas, cientos de cuchas valijas y cuchas funcionales con tres posiciones, ropa de invierno para el clima que se avecina e incluso ropa deportiva. Porque la moda canina sigue las tendencias como la moda en general.
+Muchas de estas tendencias se verán en la Expo Nuestros Perros, que se puede visitar hasta este domingo, de 10 a 20, en el pabellón verde de La Rural.
+Entre el viernes 6 y el domingo 8 habrán actividades recreativas infantiles durante todo el día, con perros entrenados: el objetivo es concientizar acerca del cuidado, tenencia, salud y manejo de los perros que tenemos en casa. El sábado se realizará el Mundial del Dogo, con más de 258 perros de esta raza y criadores de Italia, Uruguay, China, EE.UU., Serbia, Chile, Brasil y Croacia, entre otros.', foto='tecnologia.jpg';
+INSERT INTO noticias SET titulo='Darle de comer carne cruda a los perros y gatos puede poner en peligro su salud', fecha= NOW(), descripcion = 'Un estudio de la Universidad de Utrecht, en los Países Bajos, llegó a la conclusión que darle de comer carne cruda a perros y gatos puede ser muy peligroso para ellos y para los dueños. Los investigadores no encontraron los supuestos beneficios de esta tendencia que se inició hace ya varios años y continúa creciendo.
+El estudio fue publicado en la revista Veterinary Record y asegura que la carne cruda contiene parásitos y bacterias que puede perjudicar la salud. La conclusión se sacó luego de analizar 35 productos congelados de siete marcas distintas.Los niveles de salmonella, listeria y E coli que encontraron fueron alarmantes y aseguraron que pueden provocar infecciones severas, así como traerles distintos tipos de parásitos. Además, estos alimentos dan origen a alergias y otros problemas de piel.
+Por ejemplo, el 23% de los productos analizados contenía un tipo de E coli que puede provocar insuficiencia renal en humanos, mientras que el 80% de las muestras contenían otro tipo de bacterias resistente a los antibióticos. "Está claro que los productos comerciales ACBA (Alimentos Crudos Biológicamente Apropiados) pueden estar contaminados con una variedad de bacterias zoonóticas y patógenos parasitarios", dice el estudio elaborado por Paul Overgaauw y otros investigadores.', foto='carne_perro.jpg';
+INSERT INTO noticias SET titulo='Un anciano llorando junto a su gata, la historia que emocionó a Europa', fecha= NOW(), descripcion = 'La foton de un anciano turco junto a su gata, luego de sufrir el incendio total de su vivienda, conmovió a los europeos cuando se viralizó en las redes sociales. Este video que muestra la fragilidad de un hombre que lo perdió todo cosechó más de 50 millones de reproducciones entre Youtube y Facebook.', foto='anciano.jpg';

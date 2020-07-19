@@ -1,0 +1,61 @@
+<div class="section">
+    <div ng-if="turnos.length > 0" class="my__reservation__filters">
+        <div class="my__reservation__total">
+            <p>Reservas realizadas {{turnos.length}}</p>
+        </div>
+        <div>
+            <button type="button" class="btn btn-link" ng-click="activarFiltro()">
+                Filtrar <i class="fa fa-filter"></i>
+            </button>
+        </div>
+    </div>
+    <form name="formFiltroFecha" ng-show="mostrarFiltro" class="filtroFade" novalidate ng-submit="filtrarReservas()">
+        <div class="input-group">
+            <input type="date" class="form-control" name="date" ng-model="fecha" required />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-disabled="formFiltroFecha.$invalid" class="btn btn-primary input__search__reservation">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <div class="error__input" ng-show="formFiltroFecha.date.$invalid && formFiltroFecha.date.$dirty">
+            <span ng-show="formFiltroFecha.date.$error.required">La fecha no puede ser vacía</span>
+        </div>
+    </form>
+</div>
+<div class="section">
+    <div ng-if="turnos.length === 0">
+        <p class="no__results">No posee reservas registradas</p>
+    </div>
+    <div ng-if="turnos.length > 0">
+        <article class="container__my__reservations" ng-repeat="turno in turnos">
+            <div class="article__menu__my__reservation">
+                <p class="article__title__my__reservation">
+                    <i class="fa fa-calendar icon__date__my__reservation"></i> {{turno.fecha}}</span>
+                </p>
+                <div class="btn-group">
+                    <a ui-turn-on='Opciones{{$index}}' class='btn'>
+                        <i class="fa fa-ellipsis-v icon__menu__options"></i>
+                    </a>
+                    <ul class="dropdown-menu"
+                        ui-shared-state="Opciones{{$index}}"
+                        ui-outer-click="Ui.turnOff('Opciones' + $index)"
+                        ui-outer-click-if="Ui.active('Opciones' + $index)"
+                        role="menu"
+                        ui-show="Opciones{{$index}}" 
+                        ui-state="Opciones{{$index}}"
+                        ui-turn-off="Opciones{{$index}}">
+                        <li><a ng-click="cancelar(turno)">Cancelar turno</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="detail__my__reservation__article">
+                <p>Baño y corte</p>
+                <p class="my__reservation__hour">{{turno.horario}}</p>
+            </div>
+        </article>
+    </div>
+</div>
+<div ui-content-for="modals">
+    <div ui-if="modalCancelarReserva" ui-state="modalCancelarReserva" ng-include="'includes/modal-cancelar.html'"></div>
+</div>

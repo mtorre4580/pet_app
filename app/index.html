@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Lo que el perro se llevó</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-animate.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular-file-upload/angular-base64-upload.js"></script>
+    <script src="lib/mobile-angular-ui/mobile-angular-ui.min.js"></script>
+    <script src="lib/mobile-angular-ui/mobile-angular-ui.gestures.min.js"></script>
+    <script src="js/setup.js"></script>
+    <script src="js/controllers/login.controller.js"></script>
+    <script src="js/controllers/registro.controller.js"></script>
+    <script src="js/controllers/noticias.controller.js"></script>
+    <script src="js/controllers/perfil.controller.js"></script>
+    <script src="js/controllers/reservar-turno.controller.js"></script>
+    <script src="js/controllers/mis-reservas.controller.js"></script>
+    <script src="js/controllers/cerrar-sesion.controller.js"></script>
+    <script src="js/services/api.service.js"></script>
+    <script src="js/services/user.service.js"></script>
+    <link rel="stylesheet" href="lib/mobile-angular-ui/mobile-angular-ui-base.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body ng-app="loqueelperrosellevo" ui-prevent-touchmove-defaults>
+    <div ng-controller="NavbarController">
+        <div ng-if="mostrarNavbar" ng-include="'includes/sidebar.html'" ui-track-as-search-param="true" class="sidebar sidebar-left"></div>
+    </div>
+    <div class="app" ui-swipe-right='Ui.turnOn("uiSidebarLeft")' ui-swipe-left='Ui.turnOff("uiSidebarLeft")'>
+        <div ng-controller="NavbarController">
+          <div ng-if="mostrarNavbar" ng-include="'includes/navbar.html'"></div>
+        </div>
+        <div class="app-body">
+          <div class="app-content">
+            <ng-view class="scrollable-content"></ng-view>
+          </div>
+        </div>
+    </div>
+    <div ui-yield-to="modals"></div>
+  </body>
+</html>
+

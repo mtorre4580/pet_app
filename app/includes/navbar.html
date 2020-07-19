@@ -1,0 +1,13 @@
+<div class="navbar navbar-app navbar-absolute-top nabvar__title">
+    <div class="navbar-brand navbar-brand-center title__section" ui-yield-to="title" >{{tituloSeccion}}</div>
+    <div class="btn-group pull-left" >
+        <div ui-toggle="uiSidebarLeft" ng-show="tituloSeccion != 'registrarse'" class="btn sidebar-toggle">
+            <i class="fa fa-bars menu__icon"></i>
+        </div>
+        <div class="btn sidebar-toggle" ng-show="tituloSeccion == 'registrarse'">
+            <a class="btn  btn-block" href="#/">
+                <i class="fa fa-arrow-left menu__icon"></i>
+            </a>
+        </div>
+    </div>
+</div>

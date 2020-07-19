@@ -1,0 +1,42 @@
+<div class="section">
+    <div class="container container__background">
+        <form name="formRegistro" novalidate ng-submit="registrarse()">
+            <div class="form-group">
+                <label for="email" class="label__input">Email</label>
+                <input type="email" name="email" class="form-control input__control" ng-model="request.email" placeholder="Ingrese su email" ng-minlength=3 required  />
+            </div>
+            <div class="error__input" ng-show="formRegistro.email.$invalid && formRegistro.email.$dirty">
+                <span ng-show="formRegistro.email.$error.required">Campo obligatorio</span>
+                <span ng-show="formRegistro.email.$error.email">No tiene formato de email</span>
+                <span ng-show="formRegistro.email.$error.minlength">Mínimo 3 carácteres</span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label__input">Contraseña</label>
+                <input type="password" name="password" class="form-control input__control" ng-model="request.password" placeholder="Ingrese su contraseña" ng-minlength=3 required />
+            </div>
+            <div class="error__input" ng-show="formRegistro.password.$invalid && formRegistro.password.$dirty">
+                <span ng-show="formRegistro.password.$error.required">Campo obligatorio</span>
+                <span ng-show="formRegistro.password.$error.minlength">Mínimo 3 carácteres</span>
+            </div>
+            <div class="flex__container">
+                <div class="form-group" style="width:60%">
+                    <label for="nombre" class="label__input">Nombre mascota</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control input__control" ng-model="request.nombre" placeholder="Nombre de la mascota" required />
+                </div>
+                <div class="container__image">
+                    <label class="btn btn-default btn-block btn-outline" for="foto">
+                        <input id="foto" type="file" ng-model="request.foto" base-sixty-four-input />
+                        <i class="fa fa-image icon__color__image"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="error__input" ng-show="formRegistro.nombre.$invalid && formRegistro.nombre.$dirty">
+                <span ng-show="formRegistro.nombre.$error.required">Campo obligatorio</span>
+            </div>
+            <div class="loading__user" ng-show="loading">
+                <span>Registrando cuenta...</span><i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <button ng-show="!loading" ng-disabled="formRegistro.$invalid" type="submit" class="btn btn-primary btn__primary  btn-block">Registrarse</button>
+        </form>
+    </div>
+</div>

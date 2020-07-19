@@ -1,0 +1,41 @@
+<div class="section section__reservation detail__info__reservation">
+    <p>Para poder reservar un turno, elige una fecha y realiza tu reserva.</p>
+</div>
+<div class="section">
+    <form novalidate ng-submit="buscarTurnos()">
+        <div class="input-group">
+            <input type="date" class="form-control " name="date" ng-model="fecha" required />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" class="btn btn-primary input__search__reservation">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+    <div class="loading__user" ng-show="loading">
+        <span>Buscando turnos...</span><i class="fa fa-spinner fa-spin"></i>
+    </div>
+</div>
+<div class="section section__reservation results__search">
+    <article ng-repeat="turno in turnos">
+        <div class="date__reservation" ng-class="turno.disponible ? 'reservation__avaliable' : 'reservation__not__avaliable'">
+            <p>{{turno.horario}}</p>
+        </div>
+        <div ng-hide="turno.disponible" class="container__detail__reservation">
+            <div class="detail__reservation">
+                <p><i class="fa fa-paw"></i> {{turno.nombre}}</p>
+                <p>Baño y corte</p>
+            </div>
+            <div class="detail__reservation__image">
+                <img class="avatar_image" ng-src="data:image/jpeg;base64,{{turno.foto}}" class="img-responsive img-circle" alt="mascota {{turno.nombre}}" />
+            </div>
+        </div>
+        <div ng-show="turno.disponible" class="detail__reservation__free">
+            <p>Turno disponible!</p>
+            <button type="button" class="btn btn-primary btn__reservation btn-sm" ng-click="reservar(turno)">Reservar</button>
+        </div>
+    </article>
+</div>
+<div ui-content-for="modals">
+    <div ui-if="modalConfirmarReserva" ui-state="modalConfirmarReserva" ng-include="'includes/modal-confirmar.html'"></div>
+</div>

@@ -1,0 +1,38 @@
+<div>
+    <div>
+        <div class="container__edit__profile">
+            <button type="button" class="btn btn-link" ng-click="habilitarEdicion()">Editar <i class="fa fa-edit"></i></button>
+        </div>
+        <div class="container__profile">
+            <img ng-src="data:image/jpeg;base64,{{usuario.foto}}" alt="imagen de perfil" class="img-responsive img-circle avatar_image" />
+            <div class="detail__profile">
+                <p class="detail__profile__name"><i class="fa fa-paw grey__color"></i> {{usuario.nombre}}</p>
+                <p class="detail__profile__email"><i class="fa fa-envelope"></i> {{usuario.email}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <form name="formModificarDatos" ng-show="activarModificacion" class="filtroFade" novalidate ng-submit="modificarPassword()">
+            <div class="form-group">
+                <label for="password" class="label__input">Ingrese su contraseña actual</label>
+                <input type="password" name="password" class="form-control input__control" ng-model="request.password" placeholder="Ingrese su contraseña" required />
+            </div>
+            <div class="error__input" ng-show="(formModificarDatos.password.$invalid && formModificarDatos.password.$dirty) || (formModificarDatos.password.$dirty && request.password !== usuario.password)">
+                <span ng-show="formModificarDatos.password.$error.required">Ingrese su contraseña actual</span>
+                <span ng-show="formModificarDatos.password.$dirty && request.password !== usuario.password">La contraseña actual no es válida</span>
+            </div>
+            <div class="form-group">
+                <label for="newPassword" class="label__input">Ingrese su nueva contraseña</label>
+                <input type="password" name="newPassword" class="form-control input__control" ng-model="request.newPassword" placeholder="Ingrese su nueva contraseña" ng-minlength=3 required />
+            </div>
+            <div class="error__input" ng-show="(formModificarDatos.newPassword.$invalid && formModificarDatos.newPassword.$dirty)">
+                <span ng-show="formModificarDatos.newPassword.$error.required">La nueva contraseña no puede ser vacía</span>
+            </div>
+            <div class="loading__user" ng-show="loading">
+                <span>Modificando contraseña...</span><i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <button ng-show="!loading" ng-disabled="formModificarDatos.$invalid" type="submit" class="btn btn-primary btn__primary btn-block">Modificar</button>
+        </form>
+    </div>
+</div>
+

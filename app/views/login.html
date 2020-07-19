@@ -1,0 +1,31 @@
+<div class="section">
+    <div class="container">
+        <div class="logo__app">
+            <img class="img-responsive" src="images/logo.jpg" alt="lo que el perro se llevo, tienda de mascotas" />
+        </div>
+    </div>
+    <div class="container container__background">
+        <form name="formLogin" novalidate ng-submit="login()">
+            <div class="form-group">
+                <label for="email" class="label__input">Email</label>
+                <input type="email" name="email" class="form-control input__control" ng-model="request.email" placeholder="Ingrese su email" required />
+            </div>
+            <div class="error__input" ng-show="formLogin.email.$invalid && formLogin.email.$dirty">
+                <span ng-show="formLogin.email.$error.required">Campo obligatorio</span>
+                <span ng-show="formLogin.email.$error.email">No tiene formato de email</span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label__input">Contraseña</label>
+                <input type="password" name="password" class="form-control input__control" ng-model="request.password" placeholder="Ingrese su contraseña" required />
+            </div>
+            <div class="error__input" ng-show="formLogin.password.$invalid && formLogin.password.$dirty">
+                <span ng-show="formLogin.password.$error.required">Campo obligatorio</span>
+            </div>
+            <div class="loading__user" ng-show="loading">
+                <span>Verificando usuario...</span><i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <button ng-show="!loading" ng-disabled="formLogin.$invalid" type="submit" class="btn btn-primary btn__primary btn-block">acceder</button>
+        </form>
+        <a class="btn btn-link btn-block" href="#/registrarse">¿No tenes una cuenta? Registrarse</a>
+    </div>
+</div>

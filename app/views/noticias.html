@@ -1,0 +1,28 @@
+<div class="section">
+    <div class="input-group container__search">
+        <input type="text" name="texto" ng-model="texto" class="form-control" placeholder="Buscar" />
+        <span class="input-group-addon" id="buscar"><i class="fa fa-search"></i></span>
+    </div>
+    <div class="loading__user" ng-show="loading">
+        <span>Cargando noticias...</span><i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <article class="article__new" ng-repeat="noticia in noticias | filter:texto as filtrados">
+        <div>
+            <img ng-src="{{noticia.foto}}" class="img-responsive image__full" alt="{{noticia.titulo}}" />
+        </div>
+        <div class="article__new__container">
+            <h1>{{noticia.titulo}}</h1>
+            <p><i class="fa fa-calendar article__new__icon"></i> {{noticia.fecha}}</p>
+            <hr />
+            <div>
+                <p>{{noticia.descripcion}}</p>
+                <div class="article__read__more">
+                    <button class="btn btn-link">
+                        <span class="read__more">Leer más <i class="fa fa-angle-double-right"></i></span>
+                    </button>
+                </div>  
+            </div>
+        </div>
+    </article>
+    <p ng-if="filtrados.length == 0" class="no__results">No se encontraron resultados</p>
+</div>
