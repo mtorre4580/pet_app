@@ -1,6 +1,6 @@
 # pet_app
 
-Example application with ionic (angularjs)
+Example application with ionic (angularjs) (mobile-only)
 
 - Frontend: ionic and angularjs (html, css)
 - Backend: php and MySQL
